@@ -414,7 +414,7 @@ def manual_aggregate(starttime:datetime, endtime: datetime):
             download_result = query_job.result() 
             result=preform_aggregation(download_result, write_table)
             miniend=datetime.now()
-            logging.info(f"{result.table_row_str()}   {miniend-ministart:.1f}")
+            logging.info(f"{result.table_row_str()}   {(miniend - ministart).total_seconds():.1f} seconds")
         except Exception:
             logging.critical(f"Failed {active_hour}")
             failed_hours.append(active_hour)
